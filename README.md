@@ -14,6 +14,11 @@ Use [Rerun](https://github.com/rerun/rerun) to auto-restart the server when the 
 
     $ rerun -- rackup
 
+A great shell you can use is [Racksh](https://github.com/sickill/racksh). Start it and you can inspect the `Clip` model.
+
+    $ racksh
+    $ Clip::Models::Clip.all
+
 
 # License
 Clips is licensed under the MIT License. See the included LICENSE file.
