@@ -9,7 +9,7 @@ end
 module Clip::Controllers
   class Index < R '/'
     def get
-      @clips = Clip.all
+      @clips = Clip.order('created_at desc').all
       
       render :index
     end
