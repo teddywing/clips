@@ -19,13 +19,11 @@ module Clip::Controllers
     def post
       @headers['Access-Control-Allow-Origin'] = '*'
       
-      @url_regex = /\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/?)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s\`!()\[\]{};:\'\".,<>?]))/i
-      
       @result = {}
       
-      if @input.url and @url_regex.match(@input.url) and not Clip.find_by_url(@input.url)
-        Clip.create(:url => @input.url)
-        
+      clip = Clip.new(:url => @input.url)
+      
+      if clip.save
         @result[:success] = true
       else
         @result[:success] = false
@@ -41,6 +39,20 @@ end
 
 module Clip::Models
   class Clip < Base
+    validates :url, :presence => true
+    validates :url, :uniqueness => true
+    validates :url, :format => { :with => /\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/?)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s\`!()\[\]{};:\'\".,<>?]))/i, :message => 'Requires a valid URL' }
+    
+    def smart_add_url_protocol
+      unless self.url[/^http:\/\//] || self.url[/^https:\/\//]
+        self.url = 'http://' + self.url
+      end
+    end
+    
+    def save
+      self.smart_add_url_protocol
+      super
+    end
   end
   
   class BasicFields < V 1.0
