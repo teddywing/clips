@@ -5,7 +5,7 @@ An Instapaper-ish web application that allows you to collect URLs to check later
 
 
 # Running the application
-Clips is written in [Campfire](http://campfire.io). Start by `bundle install`-ing gems. Then start the server.
+Clips is written in [Camping](http://camping.io). Start by `bundle install`-ing gems. Then start the server.
 
     $ bundle install
     $ rackup
