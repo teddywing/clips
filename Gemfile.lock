@@ -24,6 +24,8 @@ GEM
     rack (1.5.2)
     rerun (0.8.0)
       listen
+    shotgun (0.9)
+      rack (>= 1.0)
     sqlite3 (1.3.7)
     tilt (1.3.6)
     tzinfo (0.3.37)
@@ -36,5 +38,6 @@ DEPENDENCIES
   camping
   rack
   rerun
+  shotgun
   sqlite3
   tilt

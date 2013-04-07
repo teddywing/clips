@@ -8,5 +8,5 @@ gem 'activerecord'
 gem 'tilt'
 
 group :development do
-  gem 'rerun'
+  gem 'shotgun'
 end
