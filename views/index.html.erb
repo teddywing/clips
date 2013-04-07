@@ -1,5 +1,5 @@
 <div>
-    <a href="javascript:(function(){var xhr=new XMLHttpRequest();var params='url='+window.location.href;xhr.open('POST','http://localhost:9292/clips',true);xhr.onreadystatechange=function(){if(this.readyState==4){if(xhr.status==200){if(xhr.responseText.success){}}}};xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');xhr.send(params);})()" onclick="alert('Drag this link onto your browser bookmarks bar.'); return false;">Clips</a>
+    <a href="javascript:(function(){var xhr=new XMLHttpRequest();var params='url='+window.location.href;xhr.open('POST','<%= @env['REQUEST_URI'] %>clips',true);xhr.onreadystatechange=function(){if(this.readyState==4){if(xhr.status==200){if(xhr.responseText.success){}}}};xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');xhr.send(params);})()" onclick="alert('Drag this link onto your browser bookmarks bar.'); return false;">Clips</a>
 </div>
 
 <% unless @clips.empty? %>
