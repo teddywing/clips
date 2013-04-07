@@ -1,0 +1,7 @@
+# Bundle
+.bundle/
+vendor/
+
+# Database
+config/database.yml
+db/*.sqlite3
