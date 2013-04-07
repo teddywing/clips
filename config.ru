@@ -9,3 +9,8 @@ environment = ENV['DATABASE_URL'] ? 'production' : 'development'
 Camping::Models::Base.establish_connection dbconfig[environment]
 
 Clip.create if Clip.respond_to? :create
+
+# Log
+log = File.new("#{ENV['RACK_ENV']}.log", 'a+')
+$stdout.reopen(log)
+$stderr.reopen(log)
